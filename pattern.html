@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pattern</title>
+	<link href='https://css.gg/undo.css' rel='stylesheet'>
+	<style type="text/css">
+		@import url("https://fonts.googleapis.com/css?family=Rubik");
+		body {
+		  height: 100vh;
+		  margin: 0;
+		  background-color: #fff;
+		}
+		body .container {
+		  width: 100%;
+		  height: 100%;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  flex-direction: column;
+		}
+		body .container .row {
+		  width: 100%;
+		  display: flex;
+		  justify-content: center;
+		  margin: 5px;
+		}
+		body .container .row h2 {
+		  border-top: 1px solid #ccc;
+		  margin: 30px 0 0 0;
+		  padding: 20px 50px 0;
+		  font-family: "Rubik", sans-serif;
+		  font-size: 20px;
+		  color: #000;
+		  letter-spacing: 1px;
+		}
+		body .container .row .action-buttons {
+		  width: 180px;
+		  height: 180px;
+		  border-radius: 50%;
+		  background-color: #000;
+		  position: relative;
+		}
+		body .container .row .action-buttons .button {
+		  width: 50px;
+		  height: 50px;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  position: absolute;
+		  border-radius: 50%;
+		  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
+		  background: black;
+		  background: linear-gradient(45deg, black 45%, #222222 85%, white 100%);
+		  transition: all 0.3s;
+		}
+		body .container .row .action-buttons .button:hover {
+		  background: rgba(255, 255, 255, 0.3);
+		}
+		body .container .row .action-buttons .circle {
+		  top: 50%;
+		  right: 10px;
+		  transform: translateY(-50%);
+		}
+		body .container .row .action-buttons .circle:before {
+		  content: "";
+		  width: 30px;
+		  height: 30px;
+		  display: inline-block;
+		  border-radius: 40px;
+		  border: 3px solid #d4706c;
+		}
+		body .container .row .action-buttons .cross {
+		  bottom: 10px;
+		  left: 50%;
+		  transform: translateX(-50%);
+		}
+		body .container .row .action-buttons .cross:before, body .container .row .action-buttons .cross:after {
+		  content: "";
+		  width: 35px;
+		  height: 3px;
+		  position: absolute;
+		  background-color: #9faad9;
+		}
+		body .container .row .action-buttons .cross:before {
+		  transform: rotate(-45deg);
+		}
+		body .container .row .action-buttons .cross:after {
+		  transform: rotate(45deg);
+		}
+		body .container .row .action-buttons .square {
+		  top: 50%;
+		  left: 10px;
+		  transform: translateY(-50%);
+		}
+		body .container .row .action-buttons .square:before {
+		  content: "";
+		  width: 22px;
+		  height: 22px;
+		  border: 3px solid #d78db5;
+		}
+		body .container .row .action-buttons .triangle {
+		  top: 10px;
+		  left: 50%;
+		  transform: translateX(-50%);
+		}
+		body .container .row .action-buttons .triangle:before, body .container .row .action-buttons .triangle:after {
+		  content: "";
+		  position: absolute;
+		  width: 0;
+		  height: 0;
+		  border: 15px solid transparent;
+		  border-bottom: 30px solid #0defd5;
+		  transform: translateY(-25%);
+		}
+		body .container .row .action-buttons .triangle:after {
+		  border-bottom-color: #000;
+		  transform: scale(0.65) translateY(-23%);
+		}
+
+		body .container .row .settings-buttons {
+		  display: flex;
+		}
+		body .container .row .settings-buttons .button {
+			border: solid 2px black;
+		    border-radius: 5px;
+		    padding: 8px 20px;
+		    margin-inline: 5px;
+		    transition: all 0.3s;
+		}
+		body .container .row .settings-buttons .button:hover {
+			background-color: black;
+			color: white;
+		}
+		img {
+		    margin: 3px;
+			padding: 0;
+		}
+		.cursor {
+			width: 50px;
+		    height: 50px;
+		    border-bottom: solid;
+		    display: inline-block;
+		    animation: onoff 1s step-end infinite;
+		}
+		@keyframes onoff { 
+		  0% {
+		    border-color: transparent;
+		  }
+
+		  50% {
+		  	border-color: black;
+		  }
+		}
+	</style>
+
+	<style type="text/css"> .gg-backspace {
+ box-sizing: border-box;
+ position: relative;
+ display: block;
+ width: 14px;
+ height: 14px;
+ transform: scale(var(--ggs,1));
+ border: 2px solid;
+ border-left: 0;
+ border-top-right-radius: 2px;
+ border-bottom-right-radius: 2px
+ }
+
+ .gg-backspace::after,
+ .gg-backspace::before {
+ content: "";
+ display: block;
+ box-sizing: border-box;
+ position: absolute
+ }
+
+ .gg-backspace::before {
+ background:
+ linear-gradient( to left,
+ currentColor 18px,transparent 0)
+ no-repeat center center/10px 2px;
+ border-right: 3px solid transparent;
+ box-shadow: inset 0 0 0 2px;
+ right: 2px;
+ bottom: 1px;
+ width: 8px;
+ height: 8px;
+ border-left: 3px solid transparent;
+ transform: rotate(45deg)
+ }
+
+ .gg-backspace::after {
+ width: 10px;
+ height: 10px;
+ border-top: 2px solid;
+ border-left: 2px solid;
+ border-top-left-radius: 1px;
+ transform: rotate(-45deg);
+ top: 0;
+ left: -5px
+ } </style>
+</head>
+<body>
+<div class='container'>
+  <div class='row'>
+    <div class='action-buttons'>
+      <div id="circle" class='circle button'></div>
+      <div id="cross" class='cross button'></div>
+      <div id="square" class='square button'></div>
+      <div id="triangle" class='triangle button'></div>
+    </div>
+  </div>
+  <div class='row'>
+  	<div class="settings-buttons">
+		<div id="reset" class='button'><i class="gg-undo"></i></div>
+		<div id="undo" class='button'><i class="gg-backspace"></i></div>
+    </div>
+  </div>
+  <div class='row'>
+    <h2>Buttons Clicked</h2>    
+  </div>
+  <div class="pattern"><div class="cursor"></div></div>
+</div>
+	<script type="text/javascript">
+		let images = {
+			circle: 'circle.png',
+			cross: 'cross.png',
+			square: 'square.png',
+			triangle: 'triangle.png'
+		}
+		function update(pattern){
+			let container = document.getElementsByClassName('pattern')[0];
+			
+			let children = '';
+			for (var i = pattern.length - 1; i >= 0; i--) {
+				let button = document.createElement('img');
+				children += '<img width="50px" height="50px" src="'+images[pattern[i]]+'">';
+			}
+			container.innerHTML = '<div class="cursor"></div>'+children;
+		}
+		let actionButtons = document.getElementsByClassName('action-buttons')[0].getElementsByClassName("button");
+		let pattern = [];
+		let undoButton = document.getElementById('undo');
+		undoButton.addEventListener('click',(evt)=>{
+			pattern.pop();
+			update(pattern);
+		});
+		let resetButton = document.getElementById('reset');
+		resetButton.addEventListener('click',(evt)=>{
+			pattern = [];
+			update(pattern);
+		});
+		for (var i = actionButtons.length - 1; i >= 0; i--) {
+			actionButtons[i].addEventListener('click',(evt)=>{
+				pattern.push(evt.target.id);
+				update(pattern);
+			});
+		}
+	</script>
+</body>
+</html>
